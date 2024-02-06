@@ -1,0 +1,318 @@
+@import "./base";
+@import "./utilities/font";
+@import "./utilities/gradient";
+@import "./utilities/border";
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    @include dim_height();
+    @include dim_width();
+
+}
+
+body {
+    @include dim_height();
+    @include dim_width();
+    @include font_K2D(primary, normal, semibold);
+    background-color: #000000;
+}
+
+
+#root {
+    @include dim_height();
+    @include dim_width();
+    @include flex(flex-start, center, column);
+    // overflow-y: scroll;
+}
+
+.bg_video {
+    z-index: -1;
+    @include pos_absolute();
+    @include dim_width();
+    @include dim_height();
+    @include flex();
+    object-fit: cover;
+    // background-color: #252323;
+}
+
+.dashboard {
+    position: relative;
+    @include dim_height();
+    @include dim_width(100%, 192rem);
+    @include flex(center, center, column);
+}
+
+@keyframes font_lighter {
+    0% {
+        color: #845DF0;
+    }
+
+    40% {
+        color: #845DF0;
+    }
+
+    50% {
+        color: #ffffff;
+    }
+
+    60% {
+        color: #845DF0;
+    }
+
+    100% {
+        color: #845DF0;
+    }
+}
+
+@keyframes lighter {
+    0% {
+        background-color: #0d0d0d;
+    }
+
+    40% {
+        background-color: #0d0d0d;
+    }
+
+    50% {
+        background-color: #5439a0;
+    }
+
+    60% {
+        background-color: #0d0d0d;
+    }
+
+    100% {
+        background-color: #0d0d0d;
+    }
+}
+
+@keyframes moveColors {
+    0% {
+        transform: rotate(0deg) scale(1, 0.2);
+    }
+
+    25% {
+        transform: rotate(90deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1, 0.2);
+    }
+
+    75% {
+        transform: rotate(270deg) scale(1);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1, 0.2);
+    }
+}
+
+.list_container {
+
+    // @include dim_width(37.5rem);
+    // @include dim_height(42rem);
+    @include flex(flex-start, $direction: column);
+    // background-color: #202523;
+}
+
+.header_container {
+    position: relative;
+    @include dim_width(42rem);
+    @include dim_height(6rem);
+    @include flex(center, center);
+    padding: 0.3rem;
+    @include gradient(bg_black);
+    @include border(2px, #845DF0);
+    border-radius: 1rem;
+
+    .header {
+        z-index: 23;
+        @include dim_width();
+        @include dim_height();
+        @include flex();
+        // @include gradient(bg_black);
+        @include border(2px, #845DF0);
+        animation: lighter 10s ease-out infinite;
+        border-radius: 0.7rem;
+
+        p {
+            padding: 0;
+            margin: 0;
+            @include font_Q(primary, normal, bold);
+        }
+
+        .bren_img {
+            position: absolute;
+            left: 0rem;
+            @include dim_width(10rem);
+            margin-bottom: 5rem;
+
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        .other_img {
+            position: absolute;
+            right: -1rem;
+            @include dim_height(12rem);
+            margin-bottom: 5rem;
+
+
+            img {
+                height: 100%;
+                transform: scale(1.1);
+                display: block;
+            }
+        }
+
+    }
+
+    .wrap_container {
+        position: absolute;
+        @include dim_width();
+        @include dim_height();
+        @include flex(center, center);
+        overflow: hidden;
+
+        .wrap {
+            @include dim_width(3rem);
+            @include dim_height(47rem);
+            @include flex(center, center);
+            @include gradient(primary);
+            animation: moveColors 10s ease-out infinite;
+        }
+    }
+
+}
+
+
+
+.list {
+    @include dim_width(25rem);
+    @include gradient(bg_black);
+    @include border(2px, #845DF0);
+    border-top: 0px;
+    border-radius: 0 0 1rem 1rem;
+    overflow: hidden;
+
+    .item {
+        @include dim_width();
+        @include dim_height(4rem);
+        @include flex(space-between);
+        padding: 0 1rem;
+        background-color: #232323;
+
+        p {
+            @include font_Q(primary, normal, bold);
+            margin: 0;
+        }
+    }
+
+    .black_item {
+        background-color: transparent;
+    }
+}
+
+.count {
+    @include dim_width(14rem);
+    @include dim_height(4.4rem);
+    @include flex($gap: 1.1rem);
+    @include border(2px, #845DF0);
+    animation: lighter 10s ease-out infinite;
+    border-top: 0px;
+    border-radius: 0 0 1rem 1rem;
+
+    .img_wrap {
+        @include flex();
+    }
+
+    p {
+        padding: 0;
+        margin: 0;
+        @include font_Q(secondary, medium, bold);
+        animation: font_lighter 10s ease-out infinite;
+    }
+
+
+}
+
+.edit_count {
+    @include dim_width();
+    margin-top: 2rem;
+    @include flex($direction: column, $gap: 1rem);
+
+    button {
+        @include border(2px, #5439a0);
+        padding: 0.6rem;
+        border-radius: 1rem;
+        margin: 0 0.4rem;
+        background-color: #5439a0;
+        color: white;
+    }
+
+    .left_time{
+        button {
+            background: linear-gradient(180deg, #7c5d39c1 0%, #a9701a 100%);
+        }
+    }
+    .add_time{
+        button {
+            background: linear-gradient(180deg, #46397cc1 0%, #371aa9 100%);
+        }
+    }
+    .options{
+        @include dim_width();
+        @include flex();
+
+
+        .pause_time{
+            button {
+                background: linear-gradient(180deg, #397c6ac1 0%, #2b9d8a 100%);
+            }
+        }
+
+        .reset_time{
+            button {
+                background: linear-gradient(180deg, #7c3939c1 0%, #9d2b2b 100%);
+            }
+        }
+
+    }
+}
+
+
+
+.top_img {
+    flex-basis: 75%;
+    @include dim_width();
+    @include flex(flex-end, center, column);
+
+    img {
+        // image-rendering: pixelated;
+    }
+
+
+}
+
+.dialogue {
+    flex-basis: 25%;
+    @include dim_width();
+    @include flex();
+    padding: 1rem;
+    background: linear-gradient(180deg, #14161dc1 0%, #1b1724 100%);
+    font-size: 1.1rem;
+
+    p {
+        line-height: 2rem;
+        padding: 0;
+    }
+
+    span {
+        color: #a780f4;
+    }
+
+}

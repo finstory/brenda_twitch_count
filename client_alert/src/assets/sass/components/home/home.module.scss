@@ -1,0 +1,144 @@
+@import "../../base";
+@import "../../utilities/gradient";
+@import "../../utilities/font";
+
+$h_header : 9rem;
+
+.home {
+    @include dim_height(calc(100vh - $h_header));
+    @include dim_width();
+
+    // @include flex(space-evenly, center);
+    section {
+        @include flex(space-evenly, center, column);
+    }
+
+    section:nth-child(1) {
+        // background-color: #297832 !important
+    }
+
+    section:nth-child(2) {
+        // background-color: #0f5241 !important
+    }
+
+    .carousel_wrap {
+        @include dim_height(70rem);
+        @include dim_width();
+        @include flex(space-between, center, column);
+    }
+
+}
+
+//* MEDIA QUERIES BASIC :
+
+
+@function maxHeightHome ($height, $auto :true) {
+    @if $auto {
+        @return calc((($height) * (9/16)) - $h_header);
+    }
+
+    @else {
+        @return calc($height - $h_header);
+    }
+}
+
+
+@media screen and (min-width: 1990px) {
+    .home {
+        @include dim_height(maxHeightHome(192rem));
+        @include flex(flex-start, center, row);
+
+        section:nth-child(1) {
+            @include dim_height();
+            flex-basis: 60%;
+        }
+
+        section:nth-child(2) {
+            @include dim_height();
+            flex-basis: 40%;
+        }
+
+    }
+
+}
+
+@media (min-width: 1024px) and (max-width: 1989px) {
+
+    .home {
+        @include dim_height(maxHeightHome(100vh, false), maxHeightHome(100vw));
+        @include flex(flex-start, center, row);
+
+        section:nth-child(1) {
+            @include dim_height();
+            flex-basis: 60%;
+        }
+
+        section:nth-child(2) {
+            @include dim_height();
+            flex-basis: 40%;
+        }
+    }
+
+}
+
+@media (min-width: 900px) and (max-width: 1023px) {
+
+    .home {
+        @include flex(flex-start, center, column, 4rem);
+
+        section:nth-child(1) {
+            @include dim_width();
+            flex-basis: 100%;
+        }
+
+        section:nth-child(2) {
+            display: none;
+        }
+    }
+
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+
+    .home {
+        @include flex(flex-start, center, column, 4rem);
+
+        section:nth-child(1) {
+            flex-basis: 50%;
+            width: 100%;
+        }
+
+        section:nth-child(2) {
+            flex-basis: 50%;
+            width: 100%;
+        }
+    }
+
+}
+
+@media screen and (max-width: 599px) {
+
+    .home {
+        @include flex(flex-start, center, column, 4rem);
+        margin: 4rem 0;
+    }
+}
+
+//% MEDIA QUERIES CONTAINER :
+
+// @media screen and (min-width: 1920px) {
+
+//     .home {
+
+//         section:nth-child(1) {
+//             @include dim_height();
+//             flex-basis: 60%;
+//         }
+
+//         section:nth-child(2) {
+//             @include dim_height();
+//             flex-basis: 40%;
+//         }
+//     }
+
+// }

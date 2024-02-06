@@ -1,0 +1,125 @@
+.home {
+    aspect-ratio: 16/7;
+    // @include dim_height(calc(100vh - 8rem), calc(108rem - 8rem));
+    @include dim_width();
+    @include flex(space-evenly, center);
+    // background-color: #241f39;
+
+    section {
+        @include dim_height(100%);
+        @include flex();
+        // background-color: #1a1a1a;
+
+    }
+
+    section:nth-child(1) {}
+
+    section:nth-child(2) {}
+
+}
+
+.carousel_container {
+    @include dim_height(65rem);
+    @include dim_width(70rem);
+    border-radius: 2rem;
+    background: #000000a3;
+}
+
+.panel_container {
+    @include dim_height(65rem);
+    @include dim_width(55rem);
+    // margin: 8rem 0;
+    border-radius: 2rem;
+    background: #000000a3;
+}
+
+@media screen and (max-width: 1800px) {
+    .carousel_container {
+        @include dim_height(46rem);
+        @include dim_width(50rem);
+    }
+
+    .panel_container {
+        @include dim_height(46rem);
+        @include dim_width(50rem);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .home {
+        margin: 4rem 0;
+        aspect-ratio: auto;
+        @include dim_width(100%);
+        @include dim_height(auto, auto, 75rem);
+
+        section {
+            @include dim_width(100%);
+        }
+
+        .carousel_container {
+
+            @include dim_height(76rem);
+            @include dim_width(80%, 70rem);
+        }
+
+        .panel_container {
+
+            @include dim_height(76rem);
+            @include dim_width(80%, 70rem);
+
+        }
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .home {
+
+        @include flex(flex-start, center, column, 8rem);
+        margin: 4rem 0;
+
+        section {
+            @include dim_width(100%);
+        }
+
+        .carousel_container {
+            aspect-ratio: 16/9;
+            // @include dim_height(46rem);
+            @include dim_width(80%, 50rem);
+        }
+
+        .panel_container {
+            aspect-ratio: 16/9;
+            // @include dim_height(46rem);
+            @include dim_width(80%, 50rem);
+
+        }
+
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+
+    header {
+        @include font_K2D(primary, small, semibold);
+    }
+
+    .home {
+        @include flex(flex-start, center, column, 8rem);
+        margin: 0;
+
+        .carousel_container {
+            border-radius: 0;
+            @include dim_width(100%);
+            @include dim_height(64rem);
+            @include flex(flex-start, center, column);
+        }
+
+        .panel_container {
+            border-radius: 0;
+            @include dim_width(100%);
+            @include dim_height(auto);
+        }
+
+    }
+}

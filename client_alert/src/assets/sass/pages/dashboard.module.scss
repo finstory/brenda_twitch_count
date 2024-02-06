@@ -1,0 +1,11 @@
+@import "../base";
+
+.dashboard {
+    position: relative;
+    // @include dim_height(calc(100vh - 8rem));
+    @include dim_width(100%, 192rem);
+    @include flex(flex-start, center, column);
+    // background-color: #1a1a1a;
+    // overflow-y: scroll;
+    // background-color: #2d2a3b;
+}

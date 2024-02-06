@@ -1,0 +1,119 @@
+@import "./base";
+@import "./utilities/font";
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    @include dim_height();
+    @include dim_width();
+
+}
+
+body {
+    @include dim_height();
+    @include dim_width();
+    @include font_K2D(primary, normal, semibold);
+    background-color: #000000;
+}
+
+
+#root {
+    @include dim_height();
+    @include dim_width();
+    @include flex(flex-start, center, column);
+    // overflow-y: scroll;
+}
+
+.bg_video {
+    z-index: -1;
+    @include pos_absolute();
+    @include dim_width();
+    @include dim_height();
+    @include flex();
+    object-fit: cover;
+    // background-color: #252323;
+}
+
+.dashboard {
+    position: relative;
+    @include dim_height();
+    @include dim_width(100%, 192rem);
+    @include flex(center, center, column);
+}
+
+.incoming_alert_container {
+    position: relative;
+    @include dim_width(19rem);
+    @include dim_height(21rem);
+    @include flex(center, center);
+    border-radius: 1rem;
+    padding: 0.3rem;
+    overflow: hidden;
+    background-color: #5a388bc2;
+
+    .wrap {
+        position: absolute;
+        @include dim_width(16rem);
+        @include dim_height(32rem);
+        @include flex(center, center);
+        background: linear-gradient(180deg, #a76ff0 0%, #681acd 100%);
+        animation: moveColors 10s infinite;
+    }
+}
+
+
+@keyframes moveColors {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.incoming_alert {
+    z-index: 2;
+    @include dim_width();
+    @include dim_height();
+    @include flex($direction: column);
+    background-image: url("https://res.cloudinary.com/dz9smi3nc/image/upload/v1706470442/twitch_api_to_take_roll/mnslf2y8hxab1_bf8eqa.gif");
+    background-size: cover;
+    background-position: center center;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: #000000;
+    // border: 1px solid #8085FF;
+}
+
+
+.top_img {
+    flex-basis: 75%;
+    @include dim_width();
+    @include flex(flex-end, center, column);
+
+    img {
+        image-rendering: pixelated;
+    }
+
+
+}
+
+.dialogue {
+    flex-basis: 25%;
+    @include dim_width();
+    @include flex();
+    padding: 1rem;
+    background: linear-gradient(180deg, #14161dc1 0%, #1b1724 100%);
+    font-size: 1.1rem;
+
+    p {
+        line-height: 2rem;
+        padding: 0;
+    }
+
+    span {
+        color: #a780f4;
+    }
+
+}

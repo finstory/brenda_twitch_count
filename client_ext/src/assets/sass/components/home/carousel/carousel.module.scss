@@ -1,0 +1,206 @@
+@import "../../home/home.module.scss";
+@import "../../../utilities/border";
+
+.title {
+    @include dim_width();
+    @include font_K2D(secondary, medium, semibold);
+    @include flex(flex-start);
+    @include font_extra($height: 3.5rem, $align: none);
+    text-shadow: 0px 0px 2px #b7b7b7c1;
+}
+
+.subtitle {
+    @include dim_width();
+    @include font_K2D(primary, normal, regular);
+    @include font_extra($height: 3.5rem, $align: none);
+
+    text-shadow: 0px 0px 3px #5ac0a7c1;
+}
+
+.view {
+    @include dim_height(37rem);
+    @include dim_width(74rem);
+    @include flex();
+    @include gradient("black");
+    border-radius: 2rem;
+    border: 3px solid #5ac0a75e;
+    overflow: hidden;
+
+    .box {
+        @include dim_height();
+        flex-basis: 50%;
+        @include flex();
+
+        &:nth-child(1) {
+            @include flex(flex-start, flex-start, column, 1rem);
+            padding: 3rem;
+        }
+
+        &:nth-child(2) {
+            img {
+                @include image(100%, 100%);
+
+            }
+        }
+    }
+
+
+}
+
+
+
+.carousel {
+    @include dim_height(25rem);
+    @include dim_width(100rem);
+    @include flex();
+
+    .selector {
+        @include dim_height();
+        @include dim_width();
+        @include flex($gap: 2rem);
+    }
+
+    .left_key {
+        margin-right: 1.5rem;
+        cursor: pointer;
+    }
+
+    .right_key {
+        margin-left: 1.5rem;
+        cursor: pointer;
+    }
+
+    .item {
+        position: relative;
+        @include dim_height();
+        @include dim_width(20rem);
+        @include flex();
+        border-radius: 2.4rem;
+        overflow: hidden;
+        cursor: pointer;
+
+        .border {
+            position: absolute;
+            @include dim_height();
+            @include dim_width();
+            border-radius: 2.4rem;
+            border: 3px solid transparent;
+            background: linear-gradient(190deg, #5AC0A6, #5AC0A642) border-box;
+            @include mask_border();
+        }
+
+        .wrap {
+            position: relative;
+            @include dim_height();
+            @include dim_width();
+            @include flex();
+            border-radius: 1.3rem;
+            padding: 4px;
+
+            img {
+                border: 5px solid #000000c1;
+                @include image(100%, 100%);
+                opacity: 0.8;
+                border-radius: 2rem;
+            }
+        }
+
+        .body {
+            position: absolute;
+            @include dim_height();
+            @include dim_width();
+            @include flex(center, flex-end);
+
+            padding: 0.7rem;
+
+            .bottom {
+                @include dim_height(10rem);
+                @include dim_width();
+                @include gradient("black");
+                @include flex();
+                border-top: 2px solid #5ac0a77a;
+                border-radius: 0 0 2.1rem 2.1rem;
+                padding: 1rem;
+            }
+        }
+
+    }
+
+    .item_disabled {
+
+        .border {
+            background: #6a87804d;
+        }
+
+        .wrap {
+            img {
+                @include image(100%, 100%);
+                border: 5px solid #000000;
+                opacity: 0.5;
+
+            }
+
+        }
+
+        .body {
+            .bottom {
+                border-top: 2px solid #6a87804d !important;
+
+                .title {
+                    @include font_K2D(off_primary, medium, bold);
+                    text-shadow: 0px 0px 1px #5ac0a7c1;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+.carousel {
+    // @include dim_height(25rem);
+    // @include dim_width(100rem);
+    // background-color: #3918bea5;
+    // border-radius: 2rem;
+}
+
+@media screen and (max-width: 500px) {
+
+    .view {
+        @include dim_height();
+        @include dim_width();
+        background-color: #3918be72;
+    }
+
+    .carousel_wrap {
+        @include dim_width();
+        overflow-x: hidden;
+        white-space: nowrap;
+        // margin-bottom: 2rem;
+    }
+
+    .item {
+        display: inline-block;
+        @include dim_width(15rem);
+        @include dim_height(15rem);
+        margin-right: 2rem;
+        // margin-left: 2px;
+        border-radius: 2rem;
+        background-size: cover;
+        border: 2px solid #5ac0a7;
+        opacity: 0.9;
+        box-shadow: 0px 0px 3px 0px #5ac0a7;
+    }
+
+
+    .title {
+        @include dim_width();
+        @include flex(flex-start)
+    }
+
+}

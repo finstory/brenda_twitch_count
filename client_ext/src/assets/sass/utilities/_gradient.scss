@@ -1,0 +1,19 @@
+$gradient_color: (
+    primary: linear-gradient(180deg, #9340d3 19.35%, #793cea 100%),
+    light_green: linear-gradient(180deg, #3c7d6d6e 0%, #579d8c3d 100%),
+    bg_black: linear-gradient(180deg, #000000 0%, #191919 100%),
+);
+
+@mixin gradient($type) {
+    @if $type =="primary" {
+        background: map-get($gradient_color, primary);
+    }
+
+    @if $type =="light_green" {
+        background: map-get($gradient_color, light_green);
+    }
+
+    @if $type =="bg_black" {
+        background: map-get($gradient_color, bg_black);
+    }
+}

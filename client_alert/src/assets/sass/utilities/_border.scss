@@ -1,0 +1,14 @@
+@mixin border($width, $color) {
+    border-width: $width;
+    border-style: solid;
+    border-color: $color;
+}
+
+
+@mixin mask_border() {
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
