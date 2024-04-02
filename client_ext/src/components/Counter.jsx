@@ -8,7 +8,6 @@ const Counter = () => {
   const [pause, setPause] = useState(false);
   const { formatSecondsToTime } = useTimer();
 
-  const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const editMode = queryParams.get("edit");
 
@@ -104,6 +103,28 @@ const Counter = () => {
     };
   }, [pause]);
 
+  const [breakMessage, setBreakMessage] = useState(false);
+
+  useEffect(() => {
+    let interval;
+
+    if (pause) {
+      interval = setInterval(() => {
+        setBreakMessage(!breakMessage);
+        setTimeout(() => {
+          setBreakMessage(breakMessage);
+        }, 1250);
+      }, 4000);
+    } else {
+      setBreakMessage(false);
+      clearInterval(interval);
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [pause]);
+
   return (
     <>
       <div className="count">
@@ -114,6 +135,14 @@ const Counter = () => {
           />
         </div>
         <p>{formatSecondsToTime(count)}</p>
+        <div
+          className="break_message"
+          style={{
+            display: breakMessage ? "flex" : "none",
+          }}
+        >
+          <p>YA VUELVO</p>
+        </div>
       </div>
 
       {editMode === "yes" ? (

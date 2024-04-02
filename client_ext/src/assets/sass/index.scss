@@ -253,6 +253,7 @@ body {
 }
 
 .count {
+    position: relative;
     @include dim_width(14rem);
     @include dim_height(4.4rem);
     @include flex($gap: 1.1rem);
@@ -275,6 +276,19 @@ body {
         margin: 0;
         @include font_Q(secondary, medium, bold);
         animation: font_lighter 10s ease-out infinite;
+    }
+
+    .break_message {
+        position: absolute;
+        @include dim_width();
+        @include dim_height();
+        @include flex(center, center);
+        transition: 0.5s;
+        background-color: #000000;
+        color: #5d7af0;
+        border-radius: 0 0 1rem 1rem;
+        animation: lighter 10s ease-out infinite;
+
     }
 
 
