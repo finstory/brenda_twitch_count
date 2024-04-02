@@ -45,11 +45,11 @@ body {
 
 @keyframes font_lighter {
     0% {
-        color: #845DF0;
+        color: #5d7af0;
     }
 
     40% {
-        color: #845DF0;
+        color: #5d7af0;
     }
 
     50% {
@@ -57,11 +57,11 @@ body {
     }
 
     60% {
-        color: #845DF0;
+        color: #5d7af0;
     }
 
     100% {
-        color: #845DF0;
+        color: #5d7af0;
     }
 }
 
@@ -75,7 +75,7 @@ body {
     }
 
     50% {
-        background-color: #5439a0;
+        background-color: #5d7af0;
     }
 
     60% {
@@ -114,18 +114,20 @@ body {
     // @include dim_width(37.5rem);
     // @include dim_height(42rem);
     @include flex(flex-start, $direction: column);
+
     // background-color: #202523;
 }
 
 .header_container {
     position: relative;
-    @include dim_width(42rem);
+    @include dim_width(41rem);
     @include dim_height(6rem);
     @include flex(center, center);
     padding: 0.3rem;
     @include gradient(bg_black);
-    @include border(2px, #845DF0);
+    @include border(2px, #5d9df0);
     border-radius: 1rem;
+
 
     .header {
         z-index: 23;
@@ -133,7 +135,7 @@ body {
         @include dim_height();
         @include flex();
         // @include gradient(bg_black);
-        @include border(2px, #845DF0);
+        @include border(2px, #5d7af0);
         animation: lighter 10s ease-out infinite;
         border-radius: 0.7rem;
 
@@ -158,8 +160,8 @@ body {
         .other_img {
             position: absolute;
             right: -1rem;
-            @include dim_height(12rem);
-            margin-bottom: 5rem;
+            @include dim_height(8rem);
+            margin-bottom: 4rem;
 
 
             img {
@@ -182,7 +184,8 @@ body {
             @include dim_width(3rem);
             @include dim_height(47rem);
             @include flex(center, center);
-            @include gradient(primary);
+            // @include gradient(primary);
+            background-color: #e8ac16;
             animation: moveColors 10s ease-out infinite;
         }
     }
@@ -194,17 +197,18 @@ body {
 .list {
     @include dim_width(25rem);
     @include gradient(bg_black);
-    @include border(2px, #845DF0);
+    @include border(2px, #5d7af0);
     border-top: 0px;
     border-radius: 0 0 1rem 1rem;
     overflow: hidden;
+    animation: skewAnimation 10s ease-in-out infinite;
 
     .item {
         @include dim_width();
         @include dim_height(4rem);
         @include flex(space-between);
         padding: 0 1rem;
-        background-color: #232323;
+        background-color: #0a0b2c;
 
         p {
             @include font_Q(primary, normal, bold);
@@ -217,17 +221,53 @@ body {
     }
 }
 
+
+@keyframes skewAnimation {
+    0% {
+        transform: skew(0deg);
+    }
+
+    40% {
+        transform: skew(0deg);
+    }
+
+    45% {
+        transform: skew(2deg);
+    }
+
+    50% {
+        transform: skew(-2deg);
+    }
+
+    55% {
+        transform: skew(2deg);
+    }
+
+    60% {
+        transform: skew(0deg);
+    }
+
+    100% {
+        transform: skew(0deg);
+    }
+}
+
 .count {
     @include dim_width(14rem);
     @include dim_height(4.4rem);
     @include flex($gap: 1.1rem);
-    @include border(2px, #845DF0);
+    @include border(2px, #5d7af0);
     animation: lighter 10s ease-out infinite;
     border-top: 0px;
     border-radius: 0 0 1rem 1rem;
 
     .img_wrap {
         @include flex();
+
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
     }
 
     p {
@@ -254,28 +294,30 @@ body {
         color: white;
     }
 
-    .left_time{
+    .left_time {
         button {
             background: linear-gradient(180deg, #7c5d39c1 0%, #a9701a 100%);
         }
     }
-    .add_time{
+
+    .add_time {
         button {
             background: linear-gradient(180deg, #46397cc1 0%, #371aa9 100%);
         }
     }
-    .options{
+
+    .options {
         @include dim_width();
         @include flex();
 
 
-        .pause_time{
+        .pause_time {
             button {
                 background: linear-gradient(180deg, #397c6ac1 0%, #2b9d8a 100%);
             }
         }
 
-        .reset_time{
+        .reset_time {
             button {
                 background: linear-gradient(180deg, #7c3939c1 0%, #9d2b2b 100%);
             }

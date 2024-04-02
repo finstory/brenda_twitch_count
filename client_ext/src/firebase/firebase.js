@@ -4,14 +4,13 @@ import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDFaveuhveIz8eO9z_pKgwZ0-Y1Gt4PO6s",
-  authDomain: "twitch-brenda-7224d.firebaseapp.com",
-  databaseURL: "https://twitch-brenda-7224d-default-rtdb.firebaseio.com",
-  projectId: "twitch-brenda-7224d",
-  storageBucket: "twitch-brenda-7224d.appspot.com",
-  messagingSenderId: "946513713020",
-  appId: "1:946513713020:web:0d57014b1e78ccb496b6f9",
-  measurementId: "G-C7K2CPQQX9",
+  apiKey: "AIzaSyAh1pbwatsCv-kZGGtlXQc30xYamYTjnJc",
+  authDomain: "twitch-97653.firebaseapp.com",
+  databaseURL: "https://twitch-97653-default-rtdb.firebaseio.com",
+  projectId: "twitch-97653",
+  storageBucket: "twitch-97653.appspot.com",
+  messagingSenderId: "525461178518",
+  appId: "1:525461178518:web:53a39243d904ba3b6bdab7"
 };
 
 

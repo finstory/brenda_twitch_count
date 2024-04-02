@@ -13,14 +13,14 @@ export const List = () => {
         <div className="header">
           <div className="bren_img">
             <img
-              src="https://res.cloudinary.com/dz9smi3nc/image/upload/v1707198907/twitch_api_to_take_roll/Sin-t%C3%ADtulo-1_bbhsja.gif"
+              src="https://res.cloudinary.com/dz9smi3nc/image/upload/v1712043366/twitch_api_to_take_roll/bren-2_bao2kv.gif"
               alt="brenda"
             />
           </div>
           <p>EXTENSIBLE - SUBS & BITS</p>
           <div className="other_img">
             <img
-              src="https://res.cloudinary.com/dz9smi3nc/image/upload/v1707198027/shop-mugs/tumblr_ma4fsg8aDZ1rfjowdo1_500_wuvpqa.gif"
+              src="https://res.cloudinary.com/dz9smi3nc/image/upload/v1712044273/twitch_api_to_take_roll/sonic_xabxu7.gif"
               alt="charizard"
             />
           </div>
@@ -49,7 +49,7 @@ export const List = () => {
           <p>10000 bits</p> <p>1 día</p>
         </div>
       </div>
-     <Counter/>
+      <Counter />
     </div>
   );
 };

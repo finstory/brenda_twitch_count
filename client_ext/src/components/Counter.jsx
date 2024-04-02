@@ -94,7 +94,7 @@ const Counter = () => {
       clearInterval(interval);
     } else {
       console.log("si");
-      if (editMode !== "yes")
+      if (editMode === "yes")
         interval = setInterval(() => {
           addTime(-1);
         }, 1000);
@@ -109,7 +109,7 @@ const Counter = () => {
       <div className="count">
         <div className="img_wrap">
           <img
-            src="https://res.cloudinary.com/dz9smi3nc/image/upload/v1707202745/twitch_api_to_take_roll/access_time_r1wzab.png"
+            src="https://res.cloudinary.com/dz9smi3nc/image/upload/v1712045412/twitch_api_to_take_roll/temporizador_yr1hgi.png"
             alt="clock"
           />
         </div>
@@ -212,8 +212,13 @@ const Counter = () => {
                 onClick={() => {
                   updatePause();
                 }}
+                style={{
+                  background: pause
+                    ? "linear-gradient(180deg, #397c6ac1 0%, #2b9d8a 100%)"
+                    : "linear-gradient(180deg, #7c3939c1 0%, #9d2b2b 100%)",
+                }}
               >
-                {pause ? "REANUDAR" : "PAUSAR"}
+                {pause ? "ACTIVAR" : "DESACTIVAR"}
               </button>
             </div>
             <div className="reset_time">
