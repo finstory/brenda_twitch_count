@@ -43,6 +43,29 @@ body {
     @include flex(center, center, column);
 }
 
+@keyframes font_lighter_fantasy {
+    0% {
+        color: #4bc588;
+    }
+
+    40% {
+        color: #4bc588;
+    }
+
+    50% {
+        color: #ffffff;
+    }
+
+    60% {
+        color: #4bc588;
+    }
+
+    100% {
+        color: #4bc588;
+    }
+}
+
+
 @keyframes font_lighter {
     0% {
         color: #5d7af0;
@@ -75,7 +98,29 @@ body {
     }
 
     50% {
-        background-color: #5d7af0;
+        background-color: #3a52b1;
+    }
+
+    60% {
+        background-color: #0d0d0d;
+    }
+
+    100% {
+        background-color: #0d0d0d;
+    }
+}
+
+@keyframes lighter_fantasy {
+    0% {
+        background-color: #0d0d0d;
+    }
+
+    40% {
+        background-color: #0d0d0d;
+    }
+
+    50% {
+        background-color: #2a7952;
     }
 
     60% {
@@ -111,6 +156,7 @@ body {
 
 .list_container {
 
+    z-index: 2;
     // @include dim_width(37.5rem);
     // @include dim_height(42rem);
     @include flex(flex-start, $direction: column);
@@ -120,13 +166,19 @@ body {
 
 .header_container {
     position: relative;
-    @include dim_width(41rem);
+    @include dim_width(35rem);
     @include dim_height(6rem);
     @include flex(center, center);
     padding: 0.3rem;
     @include gradient(bg_black);
     @include border(2px, #5d9df0);
     border-radius: 1rem;
+    box-shadow: 0 0 1rem 0.5rem #5d7af04a;
+
+    &.fantasy {
+        box-shadow: 0 0 1rem 0.5rem #5df0c630;
+        @include border(2px, #48a181);
+    }
 
 
     .header {
@@ -139,17 +191,23 @@ body {
         animation: lighter 10s ease-out infinite;
         border-radius: 0.7rem;
 
+        &.fantasy {
+            @include border(2px, #3bd099);
+            animation: lighter_fantasy 10s ease-out infinite;
+        }
+
         p {
             padding: 0;
             margin: 0;
-            @include font_Q(primary, normal, bold);
+            @include font_Q(primary, small, bold);
         }
 
         .bren_img {
+            z-index: 23;
             position: absolute;
-            left: 0rem;
+            left: -.7rem;
             @include dim_width(10rem);
-            margin-bottom: 5rem;
+            margin-bottom: 4.5rem;
 
             img {
                 width: 100%;
@@ -161,7 +219,7 @@ body {
             position: absolute;
             right: -1rem;
             @include dim_height(8rem);
-            margin-bottom: 4rem;
+            margin-bottom: 3.5rem;
 
 
             img {
@@ -174,11 +232,13 @@ body {
     }
 
     .wrap_container {
+        overflow: hidden;
+        padding: 1rem;
+        border-radius: .8rem;
         position: absolute;
         @include dim_width();
         @include dim_height();
         @include flex(center, center);
-        overflow: hidden;
 
         .wrap {
             @include dim_width(3rem);
@@ -195,20 +255,37 @@ body {
 
 
 .list {
+    z-index: 2;
     @include dim_width(25rem);
     @include gradient(bg_black);
     @include border(2px, #5d7af0);
+
+
+
     border-top: 0px;
     border-radius: 0 0 1rem 1rem;
     overflow: hidden;
     animation: skewAnimation 10s ease-in-out infinite;
+    box-shadow: 0 0 1rem 0.5rem #5d7af04a;
+
+    &.fantasy {
+        @include border(2px, #3bd099);
+        border-top: 0px;
+        border-radius: 0 0 1rem 1rem;
+        box-shadow: 0 0 1rem 0.5rem #5df0c630;
+    }
 
     .item {
         @include dim_width();
         @include dim_height(4rem);
         @include flex(space-between);
         padding: 0 1rem;
-        background-color: #0a0b2c;
+        background-color: #0a0b2cae;
+
+        &.fantasy {
+            background-color: #3bd09919;
+
+        }
 
         p {
             @include font_Q(primary, normal, bold);
@@ -219,6 +296,43 @@ body {
     .black_item {
         background-color: transparent;
     }
+
+    .eggman_img {
+        position: absolute;
+        bottom: 50%;
+        width: 12rem;
+        object-fit: cover;
+        opacity: 0.7;
+        z-index: 333;
+        animation: moveUpAndDown 90s ease-in-out infinite;
+
+        &.fantasy {
+            display: none;
+        }
+
+        @keyframes moveUpAndDown {
+            0% {
+                transform: translate(0, 200px);
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+                transform: translate(50px, 0px);
+            }
+
+            10% {
+                opacity: 0;
+                transform: translate(50px, 400px);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(0);
+            }
+        }
+    }
+
 }
 
 
@@ -258,9 +372,25 @@ body {
     @include dim_height(4.4rem);
     @include flex($gap: 1.1rem);
     @include border(2px, #5d7af0);
+
+    &.fantasy {
+        @include border(2px, #3bd099);
+        border-top: 0px;
+        border-radius: 0 0 1rem 1rem;
+    }
+
     animation: lighter 10s ease-out infinite;
+
+
     border-top: 0px;
     border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 0 1rem 0.5rem #5d7af030;
+
+    &.fantasy {
+
+        box-shadow: 0 0 1rem 0.5rem #5df0c630;
+        animation: lighter_fantasy 10s ease-out infinite;
+    }
 
     .img_wrap {
         @include flex();
@@ -276,7 +406,13 @@ body {
         margin: 0;
         @include font_Q(secondary, medium, bold);
         animation: font_lighter 10s ease-out infinite;
+
+        &.fantasy {
+            color: #5df0b3;
+            animation: font_lighter_fantasy 10s ease-out infinite;
+        }
     }
+
 
     .break_message {
         position: absolute;
@@ -289,6 +425,12 @@ body {
         border-radius: 0 0 1rem 1rem;
         animation: lighter 10s ease-out infinite;
 
+        &.fantasy {
+           p{
+            color: #4ad199;
+            animation: lighter_fantasy 10s ease-out infinite;
+           }
+        }
     }
 
 

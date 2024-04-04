@@ -28,9 +28,7 @@ export const Dashboard = () => {
         }}
       >
         <p>
-          Cuidado Bren!, La ventana de "edición" (la que tiene los botones) no
-          podes cerrarla y solo podes abrir 1 sola de edición al mismo tiempo,
-          sino te mide mal el tiempo.
+          Cuidado Bren!, La ventana "normal" (SIN BOTONES ABAJO DEL TIEMPO) solo podes abrir 1 sola al mismo tiempo, que es la que pones en obs. Si la abrís más de 1 vez se bugea el tiempo.
         </p>
       </div>
       <List />

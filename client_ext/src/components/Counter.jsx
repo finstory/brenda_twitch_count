@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useTimer } from "../hooks/useTimer";
 import { useLocation } from "react-router-dom";
 
-const Counter = () => {
+const Counter = ({ fantasy }) => {
   const [count, setCount] = useState(100);
   const [pause, setPause] = useState(false);
   const { formatSecondsToTime } = useTimer();
@@ -93,7 +93,7 @@ const Counter = () => {
       clearInterval(interval);
     } else {
       console.log("si");
-      if (editMode === "yes")
+      if (editMode !== "yes")
         interval = setInterval(() => {
           addTime(-1);
         }, 1000);
@@ -125,18 +125,27 @@ const Counter = () => {
     };
   }, [pause]);
 
+  function updateFantasy() {
+    const db = getDatabase();
+    set(ref(db, "fantasy"), !fantasy);
+  }
+
   return (
     <>
-      <div className="count">
+      <div className={`count ${fantasy ? "fantasy" : ""}`}>
         <div className="img_wrap">
           <img
-            src="https://res.cloudinary.com/dz9smi3nc/image/upload/v1712045412/twitch_api_to_take_roll/temporizador_yr1hgi.png"
+            src={
+              fantasy
+                ? "https://res.cloudinary.com/dz9smi3nc/image/upload/v1712215764/twitch_api_to_take_roll/temporizador_yr1hgi_ikun6f.png"
+                : "https://res.cloudinary.com/dz9smi3nc/image/upload/v1712045412/twitch_api_to_take_roll/temporizador_yr1hgi.png"
+            }
             alt="clock"
           />
         </div>
-        <p>{formatSecondsToTime(count)}</p>
+        <p className={fantasy ? "fantasy" : ""}>{formatSecondsToTime(count)}</p>
         <div
-          className="break_message"
+          className={`break_message ${fantasy ? "fantasy" : ""}`}
           style={{
             display: breakMessage ? "flex" : "none",
           }}
@@ -146,7 +155,7 @@ const Counter = () => {
       </div>
 
       {editMode === "yes" ? (
-        <div className="edit_count">
+        <div className={`edit_count ${fantasy ? "fantasy" : ""}`}>
           <div className="left_time">
             <button
               onClick={() => {
@@ -258,6 +267,36 @@ const Counter = () => {
               >
                 RESET
               </button>
+            </div>
+          </div>
+          <p
+            style={{
+              fontSize: "2rem",
+              padding: "1.2rem",
+              textAlign: "center",
+              textShadow: "0 0 10px #d0d0d0",
+            }}
+          >
+            {" "}
+            {fantasy ? "FINAL FANTASY" : "SONIC"}
+          </p>
+          <div className="options">
+            <div className="skins">
+              <button
+                onClick={() => {
+                  updateFantasy(!fantasy);
+                }}
+                style={{
+                  backgroundImage: fantasy
+                    ? 'url("https://res.cloudinary.com/dz9smi3nc/image/upload/v1712221229/twitch_api_to_take_roll/final-fantasy-vii-crisis-core.jpg_976912859_nk7jor.webp")'
+                    : 'url("https://res.cloudinary.com/dz9smi3nc/image/upload/v1712220747/twitch_api_to_take_roll/apps.53825.13715845469587517.60dedf91-7527-4ab4-8e98-0071e0f068f6_w9wmnm.jpg")',
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  fontSize: "1.5rem",
+                  width: "20rem",
+                  padding: "3rem",
+                }}
+              ></button>
             </div>
           </div>
         </div>
