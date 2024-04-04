@@ -28,6 +28,9 @@ const assets = [
 ];
 
 export const List = () => {
+  const queryParams = new URLSearchParams(location.search);
+  const editMode = queryParams.get("edit");
+
   const imgSize = (widht) => {
     switch (widht) {
       case "normal":
@@ -87,6 +90,38 @@ export const List = () => {
     getFantasy();
   }, []);
 
+  const [rewardList, setRewardList] = React.useState([]);
+
+  React.useEffect(() => {
+    const db = getDatabase();
+    const rewardListRef = ref(db, "rewardList");
+
+    onValue(rewardListRef, (snapshot) => {
+      const data = snapshot.val();
+      setRewardList(data);
+    });
+  }, []);
+  console.log(rewardList);
+  const incrementTime = async (index) => {
+    const updatedReward = {
+      ...rewardList[index],
+      time: rewardList[index].time + 1,
+    };
+    const db = getDatabase();
+    await set(ref(db, `rewardList/${index}`), updatedReward);
+  };
+
+  const decrementTime = async (index) => {
+    if (rewardList[index].time > 0) {
+      const updatedReward = {
+        ...rewardList[index],
+        time: rewardList[index].time - 1,
+      };
+      const db = getDatabase();
+      await set(ref(db, `rewardList/${index}`), updatedReward);
+    }
+  };
+
   return (
     <div className={`list_container ${fantasy ? "fantasy" : ""}`}>
       <div className={`header_container ${fantasy ? "fantasy" : ""}`}>
@@ -128,7 +163,48 @@ export const List = () => {
           style={{ width: size }}
         />
 
-        <div className={`item ${fantasy ? "fantasy" : ""}`}>
+        {rewardList.map((reward, index) => {
+          return (
+            <div
+              key={index}
+              className={`item ${index % 2 !== 0 ? "black_item" : ""} ${
+                fantasy ? "fantasy" : ""
+              }`}
+            >
+              <p>{reward.sub}</p>
+              <p>{reward.time} {reward.metric}</p>
+              {editMode === "yes" && (
+                <div className="buttons">
+                  <button
+                    style={{
+                      backgroundColor: "rgb(56, 179, 91)",
+                      borderRadius: "50%",
+                      marginRight: "0.5rem",
+                      textAlign: "center",
+                      border: " 1px solid rgb(27, 27, 27)",
+                    }}
+                    onClick={() => incrementTime(index)}
+                  >
+                    +
+                  </button>
+                  <button
+                    style={{
+                      backgroundColor: "rgb(174, 27, 27)",
+                      borderRadius: "50%",
+                      textAlign: "center",
+                      border: " 1px solid rgb(27, 27, 27)",
+                    }}
+                    onClick={() => decrementTime(index)}
+                  >
+                    -
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        {/* <div className={`item ${fantasy ? "fantasy" : ""}`}>
           <p>1 sub</p> <p>5 min</p>
         </div>
         <div className={`item black_item`}>
@@ -148,7 +224,7 @@ export const List = () => {
         </div>
         <div className={`item ${fantasy ? "fantasy" : ""}`}>
           <p>10000 bits</p> <p>1 día</p>
-        </div>
+        </div> */}
       </div>
       <Counter fantasy={fantasy} />
     </div>

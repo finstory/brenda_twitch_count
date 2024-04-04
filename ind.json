@@ -1,0 +1,9 @@
+[
+  { "sub": "1 sub", "time": 5, "metric": "min" },
+  { "sub": "2 sub", "time": 10, "metric": "min" },
+  { "sub": "3 sub", "time": 15, "metric": "min" },
+  { "sub": "100 bits", "time": 3, "metric": "min" },
+  { "sub": "1000 bits", "time": 20, "metric": "min" },
+  { "sub": "5000 bits", "time": 120, "metric": "min" },
+  { "sub": "10000 bits", "time": 1, "metric": "día" }
+]

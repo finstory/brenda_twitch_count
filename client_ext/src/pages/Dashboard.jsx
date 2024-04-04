@@ -28,7 +28,7 @@ export const Dashboard = () => {
         }}
       >
         <p>
-          Cuidado Bren!, La ventana "normal" (SIN BOTONES ABAJO DEL TIEMPO) solo podes abrir 1 sola al mismo tiempo, que es la que pones en obs. Si la abrís más de 1 vez se bugea el tiempo.
+        Cuidado Bren!, La ventana "normal" (SIN BOTONES ABAJO DEL TIEMPO) solo podes abrirla en el obs. Si la abrís en cualquier otro lado se bugea el tiempo.'
         </p>
       </div>
       <List />
