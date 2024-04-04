@@ -3,7 +3,7 @@ import { AppRouter } from "./AppRouter";
 
 export const AppMain = () => {
   return (
-    <BrowserRouter basename="/stream_brenda">
+    <BrowserRouter basename="/brenda_twitch_count">
       <Routes>
         <Route path="/*" element={<AppRouter />} />
       </Routes>
